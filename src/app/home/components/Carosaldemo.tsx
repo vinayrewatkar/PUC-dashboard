@@ -1,73 +1,37 @@
-// import * as React from "react"
-
-// import { Card, CardContent } from "@/components/ui/card"
-// import {
-//     Carousel,
-//     CarouselContent,
-//     CarouselItem,
-//     CarouselNext,
-//     CarouselPrevious,
-// } from "@/components/ui/carousel"
-
-// export function CarouselDemo() {
-//     return (
-//         <div className="flex items-center justify-center h-[100vh] w-[100vw]">
-//             <Carousel className="w-full max-w-xs flex items-center justify-center bg-black">
-//                 <CarouselContent>
-//                     {Array.from({ length: 5 }).map((_, index) => (
-//                         <CarouselItem key={index}>
-//                             <div className="p-1">
-//                                 <Card>
-//                                     <CardContent className="aspect-square flex items-center justify-center p-6">
-//                                         <span className="text-4xl font-semibold">{index + 1}</span>
-//                                     </CardContent>
-//                                 </Card>
-//                             </div>
-//                         </CarouselItem>
-//                     ))}
-//                 </CarouselContent>
-//                 <CarouselPrevious />
-//                 <CarouselNext />
-//             </Carousel>
-//         </div>
-//     )
-// }
-
-// export default CarouselDemo;
-
-import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel"
-import PieChartComponent from "@/app/components/PieChartComponent";
-
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 export function CarouselDemo() {
-    // Example data and labels for the PieChartComponent
-    const data = [12, 19, 3, 5, 2, 3];
-    const labels = ['Pink', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  const [activeIndex, setActiveIndex] = useState(0);
+  const images = ['banner-fancy-number-4.png', 'banner-mparivahan-1.png', 'banner-vltd-1.png']; // Replace with your image paths
 
-    return (
-        <div className="flex items-center justify-center h-[100vh] w-[100vw]">
-            <Carousel className="w-full max-w-xs flex items-center justify-center bg-gray-200">
-                <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem key={index}>
-                            <div className="p-1">
-                                <Card className="border-0">
-                                    <CardContent className="aspect-square flex items-center justify-center p-6">
-                                        {/* Render the PieChartComponent */}
-                                        <PieChartComponent data={data} labels={labels} />
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                    ))}
-                </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
-            </Carousel>
-        </div>
-    )
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((activeIndex + 1) % images.length);
+    }, 2000); // Change image every 2 seconds
+    return () => clearInterval(interval);
+  }, [activeIndex, images.length]);
+
+  return (
+    <div className="flex items-center justify-center h-screen w-full px-4">
+      <Carousel className="w-full h-auto flex items-center justify-center bg-gray-200">
+        <CarouselContent>
+          {images.map((image, index) => (
+            <CarouselItem key={index} isActive={index === activeIndex}>
+              <img src={image} alt="" className="w-full h-auto" />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-0 z-10 bg-white bg-opacity-50">
+          {/* Replace with left arrow icon */}
+        </CarouselPrevious>
+        <CarouselNext className="absolute right-0 z-10 bg-white bg-opacity-50">
+          {/* Replace with right arrow icon */}
+        </CarouselNext>
+      </Carousel>
+    </div>
+  )
 }
 
 export default CarouselDemo;
