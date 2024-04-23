@@ -88,12 +88,13 @@ export function Navlink() {
           </li>
           <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
             <a
-              href="#"
+              href="/Reports"
               className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
             >
-              Register
+              Reports
             </a>
           </li>
+          
           <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
             <a
               href="/login"
@@ -125,18 +126,18 @@ export function Navlink() {
         </li>
         <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
           <a
-            href="#"
+            href="/Reports"
             className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
           >
-            Register
+            Reports
           </a>
         </li>
         <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
           <a
-            href="/login"
+            href="#"
             className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
           >
-            Login
+            Register
           </a>
         </li>
       </ul>
