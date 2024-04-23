@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router'
+import Navlink from '../home/components/Navlink';
 
 interface LoginProps {
     onLogin: (username: string, password: string) => void;
@@ -73,40 +74,4 @@ const LoginPage: React.FC<LoginProps> = ({ onLogin }) => {
     );
 };
 
-export default LoginPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default LoginPage

@@ -9,16 +9,21 @@ export function CarouselDemo() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((activeIndex + 1) % images.length);
-    }, 2000); // Change image every 2 seconds
+    }, 3000); // Change image every 3 seconds
     return () => clearInterval(interval);
   }, [activeIndex, images.length]);
 
   return (
+
     <div className="flex items-center justify-center h-screen w-full px-4">
       <Carousel className="w-full h-auto flex items-center -mt[-50px] justify-center bg-gray-200">
+
+    <div className="flex items-center justify-center h-screen w-full px-4 mt-[-80px]"> {/* Adjust the margin-top (mt) value to move the carousel upwards */}
+      <Carousel className="w-full h-auto flex items-center justify-center bg-gray-200">
+
         <CarouselContent>
           {images.map((image, index) => (
-            <CarouselItem key={index} isActive={index === activeIndex}>
+            <CarouselItem key={index} active={index === activeIndex}>
               <img src={image} alt="" className="w-full h-auto" />
             </CarouselItem>
           ))}
