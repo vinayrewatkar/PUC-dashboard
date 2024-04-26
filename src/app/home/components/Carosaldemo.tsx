@@ -14,13 +14,8 @@ export function CarouselDemo() {
   }, [activeIndex, images.length]);
 
   return (
-
-    <div className="flex items-center justify-center h-screen w-full px-4">
-      <Carousel className="w-full h-auto flex items-center -mt[-50px] justify-center bg-gray-200">
-
-    <div className="flex items-center justify-center h-screen w-full px-4 mt-[-80px]"> {/* Adjust the margin-top (mt) value to move the carousel upwards */}
+    <div className="flex items-center justify-center h-screen w-full px-4 mt-[-80px]">
       <Carousel className="w-full h-auto flex items-center justify-center bg-gray-200">
-
         <CarouselContent>
           {images.map((image, index) => (
             <CarouselItem key={index} active={index === activeIndex}>
@@ -36,7 +31,7 @@ export function CarouselDemo() {
         </CarouselNext>
       </Carousel>
     </div>
-  )
+  );
 }
 
 export default CarouselDemo;

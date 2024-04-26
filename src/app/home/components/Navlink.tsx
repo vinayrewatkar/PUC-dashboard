@@ -72,7 +72,7 @@ export function Navlink() {
         <ul className="space-y-2 p-4">
           <li className="bg-gradient-to-r from-indigo-700 to-blue-600 px-6 py-2">
             <a
-              href="#"
+              href="/"
               className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
             >
               Home
@@ -80,7 +80,7 @@ export function Navlink() {
           </li>
           <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
             <a
-              href="#"
+              href="/PucCheck"
               className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
             >
               PUC check
@@ -110,7 +110,7 @@ export function Navlink() {
       <ul className="hidden md:flex md:space-x-2">
         <li className="bg-gradient-to-r from-indigo-900 to-blue-600 px-6 py-2">
           <a
-            href="#"
+            href="/"
             className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
           >
             Home
@@ -118,7 +118,7 @@ export function Navlink() {
         </li>
         <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
           <a
-            href="#"
+            href="/PucCheck"
             className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
           >
             PUC check
@@ -134,7 +134,7 @@ export function Navlink() {
         </li>
         <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
           <a
-            href="#"
+            href="/Register"
             className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
           >
             Register
