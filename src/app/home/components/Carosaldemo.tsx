@@ -14,7 +14,7 @@ export function CarouselDemo() {
   }, [activeIndex, images.length]);
 
   return (
-    <div className="flex items-center justify-center h-screen w-full px-4 mt-[-80px]">
+    <div className="flex items-center justify-center w-full mt-4 mb-4 h-100">
       <Carousel className="w-full h-auto flex items-center justify-center bg-gray-200">
         <CarouselContent>
           {images.map((image, index) => (

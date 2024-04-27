@@ -19,10 +19,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-end items-center min-h-screen bg-white p-10">
-      <div className="w-1/2 mr-10">
-        <img src="LoginImage.png" alt="description" />
-      </div>
+    <div className="sm:grid grid-row-2 md:grid-cols-2 md:gap-6 md:min-h-screen md:bg-white p-10">
+      <div className="flex justify-center py-6 md:w-1/2 md:mr-10  md:items-center">
+  <img className="h-56 " src="LoginImage.png" alt="description" />
+</div>
       <div className="bg-gray-100 shadow-md rounded-lg p-9 max-w-lg w-full sm:p-8">
         <h2 className="text-2xl font-bold mb-6 text-center text-black">Login</h2>
         <div className="mb-4 flex items-center justify-center">

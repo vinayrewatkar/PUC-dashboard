@@ -95,7 +95,7 @@ export function Navlink() {
             </a>
           </li>
           
-          <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6">
+          <li className="bg-gradient-to-r from-indigo-900 to-blue-600 py-3 px-6 ">
             <a
               href="/login"
               className="text-white font-bold hover:text-gray-300 transition-colors duration-300"
