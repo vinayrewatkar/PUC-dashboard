@@ -10,7 +10,7 @@ const VehicleCounterCard = () => {
         <div className="p-8">
           <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Total Vehicles Detected</div>
           <div className="mt-4 flex items-center">
-            <div className="text-5xl font-bold text-gray-900">{numberOfVehiclesDetected}</div>
+            <div className="text-5xl font-bold text-gray-900 px-6">{numberOfVehiclesDetected}</div>
           </div>
         </div>
       </div>
