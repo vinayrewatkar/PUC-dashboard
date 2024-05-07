@@ -9,10 +9,43 @@ const PucCheck = () => {
   const [responseDetails, setResponseDetails] = useState();
   const [error, setError] = useState(null);
 
-  const handleSubmitVehicleNumber = (event) => {
+  const handleSubmitVehicleNumber = async (event) => {
     event.preventDefault();
+    console.log('====================================');
+    console.log('handling text');
+    console.log('====================================');
     console.log("Vehicle Number: ", vehicleNumber);
-  };
+    const formData=new FormData();
+    formData.append("rc_number", vehicleNumber);
+    try {
+      const response = await fetch("http://127.0.0.1:5000/api/puc/puc_status", {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rc_number : vehicleNumber
+      }),
+    });
+      console.log('====================================');
+      console.log("in handle numberr submit");
+      console.log('====================================');
+      if (!response.ok) {
+        console.log(response)
+        throw new Error('Failed to fetch');
+      }
+
+      const data = await response.json();
+      console.log("Server Response:", data);
+      setResponseDetails(data);
+    } 
+    
+    catch (error) {
+      console.error("Error number:", error);
+      setError("Failed to process number. Please try again");
+}
+};
+
 
   const handleImageChange = (event) => {
     event.preventDefault();
@@ -91,6 +124,7 @@ const PucCheck = () => {
             <button
               className=" md:shadow bg-indigo-800 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
+              onSubmit={handleSubmitVehicleNumber}
             >
               Submit
             </button>
@@ -135,9 +169,9 @@ const PucCheck = () => {
 </div>
 
       {/* puc output */}
-      {responseDetails &&  (
-       <div className="flex justify-center">
-      <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64  ">
+    {responseDetails && (
+      <div className="flex justify-center">
+        <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
           <p>Message: {responseDetails?.message}</p>
           <p>Model: {responseDetails?.model}</p>
@@ -145,13 +179,21 @@ const PucCheck = () => {
           <p>Registration No: {responseDetails?.reg_no}</p>
           <p>State: {responseDetails?.state}</p>
           <h4 className="text-md font-bold mt-4">PUCC Details:</h4>
-          <p>Centre No: {responseDetails?.vehicle_pucc_details.pucc_centreno}</p>
-          <p>PUCC No: {responseDetails?.vehicle_pucc_details.pucc_no}</p>
-          <p>Valid From: {responseDetails?.vehicle_pucc_details.pucc_from}</p>
-          <p>Valid Until: {responseDetails?.vehicle_pucc_details.pucc_upto}</p>
+          {/* Check if vehicle_pucc_details exists before accessing its properties */}
+          {responseDetails.vehicle_pucc_details ? (
+            <>
+              <p>Centre No: {responseDetails.vehicle_pucc_details.pucc_centreno}</p>
+              <p>PUCC No: {responseDetails.vehicle_pucc_details.pucc_no}</p>
+              <p>Valid From: {responseDetails.vehicle_pucc_details.pucc_from}</p>
+              <p>Valid Until: {responseDetails.vehicle_pucc_details.pucc_upto}</p>
+            </>
+          ) : (
+            <p>No PUCC details available</p>
+          )}
         </div>
-       </div>
-       )} 
+      </div>
+    )}
+ 
       
     {/* <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
@@ -174,48 +216,39 @@ const PucCheck = () => {
 
 export default PucCheck;
 
-
 // import * as React from "react";
 // import { useState } from "react";
 // import Navlink from '../home/components/Navlink';
-
 // const PucCheck = () => {
 //   const [vehicleNumber, setVehicleNumber] = useState("");
 //   const [image, setImage] = useState<string | null>(null);
 //   // const [video, setVideo] = useState<string | null>(null);
-
 //   const handleSubmitVehicleNumber = (event: React.FormEvent) => {
 //     event.preventDefault();
 //     // Handle the vehicle number submission here
 //     console.log("Vehicle Number: ", vehicleNumber);
 //   };
-
 //   const handleSubmitImage = async (event: React.FormEvent) => {
 //     event.preventDefault();
 //     if (!image) {
 //       alert("Please select an image to upload.");
 //       return;
 //     }
-  
-
 //   // const handleSubmitVideo = (event: React.FormEvent) => {
 //   //   event.preventDefault();
 //   //   // Handle the video submission here
 //   //   console.log("Video: ", video);
 //   // };
-
 //   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 //     if (event.target.files) {
 //       setImage(URL.createObjectURL(event.target.files[0]));
 //     }
 //   };
-
 //   // const handleVideoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 //   //   if (event.target.files) {
 //   //     setVideo(URL.createObjectURL(event.target.files[0]));
 //   //   }
 //   // };
-  
 //   return (
 //     <div>
 //       <div className="flex flex-col items-center justify-center h-screen bg-white">
@@ -249,11 +282,7 @@ export default PucCheck;
 //               </button>
 //             </div>
 //           </div>
-
-
 //         </form>
-
-
 //         <div className="pt-10 pb-3">
 //         <form 
 //         action="https://backend-puc.onrender.com"
@@ -275,12 +304,6 @@ export default PucCheck;
 //                 // onChange={handleImageChange}
 //               />              
 //         </div>
-        
-
-
-
-
-
 //         {/* Video input */}
 //         {/* <div className="pt-5 pb-3">
 //         <p>choose a Video</p>
@@ -294,13 +317,6 @@ export default PucCheck;
 //                 onChange={handleVideoChange}
 //               />              
 //         </div> */}
-
-
-
-
-
-        
-       
 //           <div className="md:flex md:items-center">
 //             <div className="md:w-1/3"></div>
 //             <div className="md:w-2/3">
