@@ -61,15 +61,21 @@ const PucCheck = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white">
-      <form onSubmit={handleSubmitVehicleNumber} className="w-full max-w-sm mb-4">
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+    <div>
+    
+
+<div className=" bg-[#F0F7EE] mb-10 mt-20 shadow-lg rounded-lg  sm: mr-3 sm: ml-3 md:max-w-lg md:mx-auto md:mb-10 md:mt-20 md:rounded-lg md:shadow-lg md:w-full md:flex md:justify-center">
+  <div className="md: p-4">
+    <div className=" md:h-40">
+      <form onSubmit={handleSubmitVehicleNumber} className=" md: w-full md :max-w-sm mb-4">
+        {/* Vehicle Number input */}
+        <div className="md:flex md:items-center mb-6 mt-6">
+          <div className="md:w-1/3 mt-4">
             <label className="block text-indigo-800 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="vehicle-number">
               Vehicle Number
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div>
             <input
               className="appearance-none border-2 border-indigo-800 rounded w-full py-2 px-4 text-indigo-800 leading-tight focus:outline-none focus:bg-white focus:border-indigo-800"
               id="vehicle-number"
@@ -79,39 +85,56 @@ const PucCheck = () => {
             />
           </div>
         </div>
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
+        {/* Submit button for Vehicle Number */}
+        <div className=" flex items-center justify-center md:flex items-center justify-center ">
+         
             <button
-              className="shadow bg-indigo-800 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className=" md:shadow bg-indigo-800 hover:bg-indigo-600 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
               type="submit"
             >
               Submit
             </button>
-          </div>
+        
         </div>
       </form>
+    </div>
 
-      <form onSubmit={handleSubmitImage} className="w-full max-w-sm">
-        <div className="pt-10">
-          <p>Choose an image:</p>
+    {/* Image input */}
+    <div>
+      <div  className=" md:h-48 ml-8">
+      <form onSubmit={handleSubmitImage} className="w-full max-w-sm mb-4">
+       <div className="flex flex-col items-center">
+       <div className="m-2">
+        <div className="m-2">
+        <p>Choose an image:</p>
+        </div>
+          
           <input
             type="file"
             accept="image/*"
             onChange={handleImageChange}
-            className="border-2 border-indigo-800 p-4"
+            className="border-2 border-indigo-800 py-4 pl-4 mx-8"
           />
         </div>
-        <button
-          type="submit"
-          className="bg-indigo-800 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
-          onSubmit={handleSubmitImage}
-        >
-          Submit Image
-        </button>
+        {/* Submit button for Image */}
+        <div className="md:flex items-center justify-center pt-4">
+          <button
+            type="submit"
+            className="bg-indigo-800 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded"
+            onSubmit={handleSubmitImage}
+          >
+            Submit Image
+          </button>
+        </div>
+        </div> 
       </form>
-
-      {responseDetails && (
+      </div>
+    
+  </div>
+</div>
+</div>
+      {/* puc output */}
+      {/* {responseDetails && (
       <div className="mt-8 p-4 text-left border border-indigo-800 rounded">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
           <p>Message: {responseDetails?.message}</p>
@@ -125,10 +148,24 @@ const PucCheck = () => {
           <p>Valid From: {responseDetails?.vehicle_pucc_details.pucc_from}</p>
           <p>Valid Until: {responseDetails?.vehicle_pucc_details.pucc_upto}</p>
         </div>
-       )} 
-
-     
+       )}  */}
+       <div>
+    <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
+          <h3 className="text-lg font-bold">Vehicle Details:</h3>
+          <p>Message: zxedcrftvgybhunjim</p>
+          <p>Model: ghj</p>
+          <p>Owner: cfvgbhnj</p>
+          <p>Registration No: xctfvgybhnu</p>
+          <p>State: xctfvgybhnu</p>
+          <h4 className="text-md font-bold mt-4">PUCC Details:</h4>
+          <p>Centre No: xctfvgybhnu</p>
+          <p>PUCC No: xctfvgybhnu</p>
+          <p>Valid From: xctfvgybhnu</p>
+          <p>Valid Until: xctfvgybhnu</p>
+        </div>
+       </div>
     </div>
+    
   );
 };
 
