@@ -133,9 +133,11 @@ const PucCheck = () => {
   </div>
 </div>
 </div>
+
       {/* puc output */}
-      {/* {responseDetails && (
-      <div className="mt-8 p-4 text-left border border-indigo-800 rounded">
+      {responseDetails &&  (
+       <div className="flex justify-center">
+      <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64  ">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
           <p>Message: {responseDetails?.message}</p>
           <p>Model: {responseDetails?.model}</p>
@@ -148,9 +150,10 @@ const PucCheck = () => {
           <p>Valid From: {responseDetails?.vehicle_pucc_details.pucc_from}</p>
           <p>Valid Until: {responseDetails?.vehicle_pucc_details.pucc_upto}</p>
         </div>
-       )}  */}
-       <div>
-    <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
+       </div>
+       )} 
+      
+    {/* <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
           <p>Message: zxedcrftvgybhunjim</p>
           <p>Model: ghj</p>
@@ -162,9 +165,9 @@ const PucCheck = () => {
           <p>PUCC No: xctfvgybhnu</p>
           <p>Valid From: xctfvgybhnu</p>
           <p>Valid Until: xctfvgybhnu</p>
-        </div>
+        </div> */}
        </div>
-    </div>
+  
     
   );
 };
