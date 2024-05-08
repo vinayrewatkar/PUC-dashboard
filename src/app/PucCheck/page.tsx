@@ -2,15 +2,19 @@
 
 import { Content } from "next/font/google";
 import React, { useState } from "react";
+import Loader from "../components/Loader";
+
 
 const PucCheck = () => {
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [image, setImage] = useState(null);
   const [responseDetails, setResponseDetails] = useState();
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const handleSubmitVehicleNumber = async (event) => {
     event.preventDefault();
+    setLoading(true);
     console.log('====================================');
     console.log('handling text');
     console.log('====================================');
@@ -34,7 +38,7 @@ const PucCheck = () => {
         console.log(response)
         throw new Error('Failed to fetch');
       }
-
+     
       const data = await response.json();
       console.log("Server Response:", data);
       setResponseDetails(data);
@@ -43,12 +47,17 @@ const PucCheck = () => {
     catch (error) {
       console.error("Error number:", error);
       setError("Failed to process number. Please try again");
+      setLoading(false);
+}
+finally {
+  setLoading(false);
 }
 };
 
 
   const handleImageChange = (event) => {
     event.preventDefault();
+   
     if (event.target.files && event.target.files[0]) {
       setImage(event.target.files[0]); // Set the file itself, not the URL
     }
@@ -56,6 +65,7 @@ const PucCheck = () => {
 
   const handleSubmitImage = async (event) => {
     event.preventDefault();
+    
     console.log('====================================');
     console.log("in handle image submit");
     console.log('====================================');
@@ -68,6 +78,7 @@ const PucCheck = () => {
 
   
     try {
+      setLoading(true);
       const response = await fetch("http://127.0.0.1:5000/api/puc/process_image", {
         method: 'POST',
         body: formData,
@@ -90,6 +101,10 @@ const PucCheck = () => {
     catch (error) {
       console.error("Error uploading image:", error);
       setError("Failed to process image. Please try again");
+      setLoading(false);
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -167,9 +182,14 @@ const PucCheck = () => {
   </div>
 </div>
 </div>
-
+    
       {/* puc output */}
+      
+      {loading ? <Loader  /> : null}
+      
+      
     {responseDetails && (
+      
       <div className="flex justify-center">
         <div className="mb-10 p-8 text-left border bg-[#F0F7EE] rounded mx-auto w-64">
           <h3 className="text-lg font-bold">Vehicle Details:</h3>
