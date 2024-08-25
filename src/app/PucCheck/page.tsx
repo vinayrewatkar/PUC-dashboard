@@ -59,7 +59,7 @@ finally {
     event.preventDefault();
    
     if (event.target.files && event.target.files[0]) {
-      setImage(event.target.files[0]); // Set the file itself, not the URL
+      setImage(event.target.files[0]); 
     }
   };
 
